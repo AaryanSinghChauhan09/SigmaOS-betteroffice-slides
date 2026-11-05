@@ -1,0 +1,9 @@
+[package]
+name = "sigmaos_betteroffice_slides"
+version = "0.1.0"
+edition = "2021"
+description = "BetterOffice slides editor — slide master, layouts, transitions, speaker view, and ODP/PPTX export"
+
+[lib]
+name = "sigmaos_betteroffice_slides"
+path = "src/lib.rs"
