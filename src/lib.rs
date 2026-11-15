@@ -69,7 +69,9 @@ impl CollabDeck {
     }
 
     pub fn add_slide(&mut self, slide: Slide) -> Result<(), SlideError> {
-        if slide.title.trim().is_empty() { return Err(SlideError::EmptyTitle); }
+        if slide.title.trim().is_empty() {
+            return Err(SlideError::EmptyTitle);
+        }
         let id = slide.id.clone();
         if self.slides.contains_key(&id) {
             return Err(SlideError::DuplicateSlide(id.clone()));
@@ -78,9 +80,13 @@ impl CollabDeck {
         Ok(())
     }
 
-    pub fn slide_count(&self) -> usize { self.slides.len() }
+    pub fn slide_count(&self) -> usize {
+        self.slides.len()
+    }
 
-    pub fn slides(&self) -> Vec<&Slide> { self.slides.values().collect() }
+    pub fn slides(&self) -> Vec<&Slide> {
+        self.slides.values().collect()
+    }
 }
 
 #[cfg(test)]
@@ -97,7 +103,13 @@ mod tests {
     #[test]
     fn test_add_slide_aaa() {
         let mut d = CollabDeck::new("My Deck");
-        let s = Slide { id: "s1".into(), title: "Overview".into(), content: "Content".into(), layout: LayoutType::Title, transition: TransitionType::Fade };
+        let s = Slide {
+            id: "s1".into(),
+            title: "Overview".into(),
+            content: "Content".into(),
+            layout: LayoutType::Title,
+            transition: TransitionType::Fade,
+        };
         d.add_slide(s).unwrap();
         assert_eq!(d.slide_count(), 1);
     }
@@ -105,16 +117,34 @@ mod tests {
     #[test]
     fn test_empty_title_rejected_aaa() {
         let mut d = CollabDeck::new("My Deck");
-        let s = Slide { id: "x".into(), title: "".into(), content: "X".into(), layout: LayoutType::Title, transition: TransitionType::None };
+        let s = Slide {
+            id: "x".into(),
+            title: "".into(),
+            content: "X".into(),
+            layout: LayoutType::Title,
+            transition: TransitionType::None,
+        };
         assert!(d.add_slide(s).is_err());
     }
 
     #[test]
     fn test_duplicate_rejected_aaa() {
         let mut d = CollabDeck::new("My Deck");
-        let s = Slide { id: "x".into(), title: "X".into(), content: "X".into(), layout: LayoutType::Title, transition: TransitionType::None };
+        let s = Slide {
+            id: "x".into(),
+            title: "X".into(),
+            content: "X".into(),
+            layout: LayoutType::Title,
+            transition: TransitionType::None,
+        };
         d.add_slide(s).unwrap();
-        let s2 = Slide { id: "x".into(), title: "X".into(), content: "X".into(), layout: LayoutType::Title, transition: TransitionType::None };
+        let s2 = Slide {
+            id: "x".into(),
+            title: "X".into(),
+            content: "X".into(),
+            layout: LayoutType::Title,
+            transition: TransitionType::None,
+        };
         assert!(d.add_slide(s2).is_err());
     }
 }
