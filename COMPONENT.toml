@@ -3,7 +3,7 @@ name = "SigmaOS-betteroffice-slides"
 tier = 3
 stability = "scaffold"
 language = "rust"
-description = "BetterOffice slides editor — slide master, layouts, transitions, speaker view, and ODP/PPTX export"
+description = "No GitHub description is set; component scope remains unclassified."
 upstream = []
 
 [contract]
